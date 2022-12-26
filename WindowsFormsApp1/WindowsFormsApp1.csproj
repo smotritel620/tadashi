@@ -90,7 +90,12 @@
     <None Include="Resources\room %281%29.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\back.png" />
+    <None Include="Resources\back %281%29.png" />
     <Content Include="Resources\enemu.png" />
+    <None Include="Resources\settings.png" />
+    <None Include="Resources\exit.png" />
+    <None Include="Resources\start.png" />
     <None Include="Resources\pul.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

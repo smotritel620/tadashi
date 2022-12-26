@@ -13,6 +13,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        Form startScreen;
         Random Enemy_count;
         bool w = true;
         bool d = true;
@@ -41,6 +42,67 @@ namespace WindowsFormsApp1
             timerP = new System.Windows.Forms.Timer();
             timerP.Tick += TimerP_Tick;
             timerP.Interval = 30;
+            startScreen = new Form()
+            {
+                Width = 500,
+                Height = 700,
+                BackgroundImage = Properties.Resources.back__1_,
+                BackgroundImageLayout = ImageLayout.Stretch
+            };
+            PictureBox startButton = new PictureBox()
+            {
+                Width = 300,
+                Height = 100,
+                Location = new Point(100, 300),
+                BackColor = Color.Transparent,
+                BackgroundImage = Properties.Resources.start,
+                BackgroundImageLayout = ImageLayout.Stretch
+            };
+            startScreen.Controls.Add(startButton);
+            PictureBox settingButton = new PictureBox()
+            {
+                Width = 300,
+                Height = 100,
+                Location = new Point(100, 410),
+                BackColor = Color.Transparent,
+                BackgroundImage = Properties.Resources.settings,
+                BackgroundImageLayout = ImageLayout.Stretch
+            };
+            startScreen.Controls.Add(settingButton);
+            PictureBox exitButton = new PictureBox()
+            {
+                Width = 300,
+                Height = 100,
+                Location = new Point(100, 520),
+                BackColor = Color.Transparent,
+                BackgroundImage = Properties.Resources.exit,
+                BackgroundImageLayout = ImageLayout.Stretch
+            };
+            startScreen.Controls.Add(exitButton);
+            startScreen.Focus();
+            startButton.Click += StartButton_Click;
+            exitButton.Click += ExitButton_Click;
+            startScreen.Show();
+
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Вы собираитись их бросить?", "", MessageBoxButtons.OKCancel);
+            if(result == DialogResult.OK)
+            {
+                startScreen.Close();
+                startScreen.Dispose();
+                this.Close();
+                this.Dispose();
+            }
+        }
+
+        private void StartButton_Click(object sender, EventArgs e)
+        {
+            startScreen.Close();
+            startScreen.Dispose();
+            this.Focus();
         }
 
         private void RemovePul(int ind)
